@@ -67,4 +67,5 @@ modules["Utils"] = {
     "copy": "[link] Copy telegram message by its message link",
     "wow": "[w/o prefix] Save media to saved message (also work media with timer)",
     "profile": "[reply|user] Get profile info of user",
+    "up": "[direct link] Upload file to telegram with direct link download",
 }
