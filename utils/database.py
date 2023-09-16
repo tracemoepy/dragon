@@ -1,8 +1,12 @@
 # Copyright (C) 2020 - Dragon Userbot
 
 import pymongo
+import dns.resolver
 
 from utils.config import db_url, db_name
+
+dns.resolver.default_resolver = dns.resolver.Resolver(configure=False)
+dns.resolver.default_resolver.nameservers = ["8.8.8.8"]
 
 
 class Database:
