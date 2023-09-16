@@ -45,8 +45,8 @@ modules["noted"] = {
 
 modules["security"] = {
     "antipm": "[on|off] When enabled, deletes all messages from users who are not in the contact",
-    "pmreport": "[on|off] Enable spam reporting",
-    "pmblock": "[on|off] Enable user blocking",
+    "pmreport": "[on|off] Enable spam reporting (antipm must set to 'on')",
+    "pmblock": "[on|off] Enable user blocking (antipm must set to 'on')",
 }
 
 modules["system"] = {
