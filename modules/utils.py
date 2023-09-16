@@ -2,6 +2,7 @@
 
 import os
 import datetime
+import requests
 
 from asyncio import sleep
 
@@ -173,3 +174,38 @@ async def _copy(client: Client, message: Message):
                 await message.edit(format_exc(e))
     else:
         return await message.edit("Link invalid!")
+
+
+@Client.on_message(filters.command("up", prefix) & filters.me)
+async def _upload(client: Client, message: Message):
+    if len(message.command) > 1:
+        link = message.text.split(maxsplit=1)[1]
+    elif message.reply_to_message:
+        link = message.reply_to_message.text
+    else:
+        await message.edit(
+            f"Usage: <code>{prefix}up </code>[url to download]"
+        )
+        return
+
+    await message.edit("Downloading...")
+    file_name = "downloads/" + link.split("/")[-1]
+
+    try:
+        resp = requests.get(link)
+        resp.raise_for_status()
+
+        with open(file_name, "wb") as f:
+            for chunk in resp.iter_content(chunk_size=8192):
+                f.write(chunk)
+
+        upload = await message.edit("Uploading...")
+        msg = await client.send_document(message.chat.id, file_name)
+        await msg.reply(
+            "Successfully uploaded!\n" \
+            "Remove with:\n" \
+            f"<code>{prefix}sh rm {file_name}</code>"
+        )
+        await upload.delete()
+    except Exception as e:
+        await message.edit(format_exc(e))
