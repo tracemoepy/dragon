@@ -24,7 +24,7 @@ async def _del(client: Client, message: Message) -> None:
 @Client.on_message(
     filters.command("purge", prefix) 
     & filters.me 
-    & ~filters.user
+    & ~filters.private
     & ~filters.bot
     & ~supports
 )
@@ -42,7 +42,7 @@ async def _purge(client: Client, message: Message) -> None:
 @Client.on_message(
     filters.command("purgeme", prefix)
     & filters.me 
-    & ~filters.user
+    & ~filters.private
     & ~filters.bot
     & ~supports
 )
