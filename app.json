@@ -1,0 +1,18 @@
+{
+    "name": "Dragon-Fork Userbot",
+    "stack": "container",
+    "env": {
+        "SESSION_STRING": {
+            "required": true
+        },
+        "MONGODB_URL": {
+            "required": true
+        }
+    },
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "eco"
+        }
+    }
+}
