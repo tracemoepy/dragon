@@ -157,9 +157,8 @@ async def _eval_(client: Client, message: Message):
         )
 
     evars = {
-        "c": client,
-        "m": message,
-        "r": message.reply_to_message,
+        "msg": message,
+        "rep": message.reply_to_message,
         "chat": message.chat,
         "user": (message.reply_to_message or message).from_user,
         "client": client,
