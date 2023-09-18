@@ -1,4 +1,4 @@
-from utils.help import modules
+from .helpers import modules
 
 
 modules["access"] = {
