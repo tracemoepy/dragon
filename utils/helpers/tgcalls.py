@@ -35,6 +35,3 @@ async def _calls(
             return full.call
     await message.edit(f"{format_exc(e)}")
     return False
-
-
-from pytgcalls import GroupCallFactory
